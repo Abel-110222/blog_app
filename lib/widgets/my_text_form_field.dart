@@ -1,3 +1,5 @@
+// ignore_for_file: use_super_parameters
+
 import 'package:blog_app/widgets/my_decimal_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

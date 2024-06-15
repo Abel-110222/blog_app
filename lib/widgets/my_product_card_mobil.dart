@@ -59,8 +59,8 @@ class _MyProductCardMobilState extends State<MyProductCardMobil> {
                       ? Container(
                           width: 130, // Ancho de la imagen
                           height: 150, // Alto de la tarjeta
-                          decoration: BoxDecoration(
-                            borderRadius: const BorderRadius.only(
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(10),
                               bottomLeft: Radius.circular(10),
                             ),

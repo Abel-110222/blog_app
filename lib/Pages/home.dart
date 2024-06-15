@@ -1,4 +1,4 @@
-// ignore_for_file: unused_local_variable, sized_box_for_whitespace, use_build_context_synchronously
+// ignore_for_file: unused_local_variable, sized_box_for_whitespace, use_build_context_synchronously, unnecessary_null_comparison, prefer_if_null_operators
 
 import 'dart:convert';
 
@@ -18,12 +18,7 @@ import 'package:blog_app/bloc/theme.dart';
 import 'package:blog_app/models/category/categories_model.dart';
 import 'package:blog_app/models/organization/organization_model.dart';
 import 'package:blog_app/models/product/Product_Model.dart';
-import 'package:blog_app/providers/categories_provider.dart';
-import 'package:blog_app/providers/organizations_provider.dart';
-import 'package:blog_app/providers/product_provider.dart';
 import 'package:blog_app/utils/responsive.dart';
-import 'package:blog_app/widgets/my_category_card.dart';
-import 'package:blog_app/widgets/my_filter_card.dart';
 import 'package:blog_app/widgets/my_product_card.dart';
 import 'package:blog_app/widgets/my_product_card_mobil.dart';
 import 'package:blog_app/widgets/my_text_form_field.dart';
@@ -115,7 +110,6 @@ class _HomeState extends State<Home> {
       // Decodifica el JSON a un mapa de Dart
       Map<String, dynamic> userMap = jsonDecode(userJson);
       myUser = UserModel.fromJson(userMap);
-      print(userMap);
 
       // Verifica si el JSON contiene un objeto 'user' anidado
       Map<String, dynamic> nestedUser = userMap;
@@ -124,9 +118,10 @@ class _HomeState extends State<Home> {
       myUser = UserModel.fromJson(nestedUser);
       setState(() {});
       // Mostrar email del usuario (ejemplo de impresión)
-      print(myUser!.username);
     } else {
-      print('No user data found in SharedPreferences');
+      if (kDebugMode) {
+        print('No user data found in SharedPreferences');
+      }
     }
     postsAll = [];
     DefaultStructHttpResponse response = await PostController.getAll("", "");
@@ -369,7 +364,7 @@ class _HomeState extends State<Home> {
                                       color: Colors.grey.withOpacity(0.5), // Color de la sombra
                                       spreadRadius: 2, // Extensión de la sombra
                                       blurRadius: 5, // Desenfoque de la sombra
-                                      offset: Offset(0, 3), // Desplazamiento de la sombra (x, y)
+                                      offset: const Offset(0, 3), // Desplazamiento de la sombra (x, y)
                                     ),
                                   ],
                                 ),
@@ -602,7 +597,7 @@ class _HomeState extends State<Home> {
                                                     width: 380,
                                                     height: 400,
                                                     child: MyProductCard(
-                                                      comentarios: [],
+                                                      comentarios: const [],
                                                       onPressed: (value) {
                                                         // Navegar a ProductScreen
                                                         Navigator.pushNamed(context, '/product');
@@ -672,12 +667,12 @@ class _HomeState extends State<Home> {
                                                       },
                                                       skeleton: isLoading,
                                                       isCarrito: false,
-                                                      description: product.title ?? '',
+                                                      description: product.title,
                                                       price: "${12.00}",
-                                                      url: product.image_url ?? '',
+                                                      url: product.image_url,
                                                       image:
                                                           null, // Usa la URL de la imagen del producto
-                                                      label: product.content!,
+                                                      label: product.content,
                                                     ),
                                                   ),
                                                 ),
@@ -751,14 +746,14 @@ class _HomeState extends State<Home> {
                                                 },
                                                 skeleton: isLoading,
                                                 isCarrito: false,
-                                                description: product.title ?? '',
+                                                description: product.title,
                                                 price: "${12.00}",
                                                 url: product.image_url == null
                                                     ? ''
-                                                    : product.image_url ?? '',
+                                                    : product.image_url,
 
                                                 image: null, // Usa la URL de la imagen del producto
-                                                label: product.content!,
+                                                label: product.content,
                                               ),
                                             ),
                                           );
@@ -1177,7 +1172,7 @@ class _HomeState extends State<Home> {
                     ],
                   ),
                   const SizedBox(height: 5),
-                  Text("En Construcion...")
+                  const Text("En Construcion...")
                   // Card(
                   //   margin: const EdgeInsets.only(top: 10, left: 10, right: 10),
                   //   child: Column(children: [
@@ -1324,7 +1319,7 @@ class _HomeState extends State<Home> {
           builder: (BuildContext context, StateSetter setState) {
             return AlertDialog(
               contentPadding: EdgeInsets.zero,
-              shape: RoundedRectangleBorder(
+              shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(10.0)),
               ),
               elevation: 0,
@@ -1333,8 +1328,8 @@ class _HomeState extends State<Home> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SizedBox(width: 10), // Espacio a la izquierda
-                    Text(
+                    const SizedBox(width: 10), // Espacio a la izquierda
+                    const Text(
                       "Título del diálogo",
                       style: TextStyle(
                         color: Colors.white,
@@ -1346,7 +1341,7 @@ class _HomeState extends State<Home> {
                       width: 20,
                       height: 20,
                       child: IconButton(
-                        icon: Icon(Icons.close, color: Colors.black),
+                        icon: const Icon(Icons.close, color: Colors.black),
                         onPressed: () {
                           Navigator.of(context).pop(); // Botón para cerrar el diálogo
                         },
@@ -1361,10 +1356,10 @@ class _HomeState extends State<Home> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(height: 35),
+                    const SizedBox(height: 35),
                     Container(
                       height: 60,
-                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: Card(
                         elevation: 5,
                         child: MyTextFormField(
@@ -1388,10 +1383,10 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Container(
                       height: 60,
-                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: Card(
                         elevation: 5,
                         child: MyTextFormField(
@@ -1415,7 +1410,7 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Container(
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.black, width: 1.0),
@@ -1437,7 +1432,7 @@ class _HomeState extends State<Home> {
                                     top: 0,
                                     right: 0,
                                     child: IconButton(
-                                      icon: Icon(FontAwesomeIcons.x, color: Colors.red),
+                                      icon: const Icon(FontAwesomeIcons.x, color: Colors.red),
                                       onPressed: () {
                                         setState(() {
                                           imageUrl = "";
@@ -1448,7 +1443,7 @@ class _HomeState extends State<Home> {
                                 ],
                               )
                             : IconButton(
-                                icon: Icon(Icons.add_photo_alternate, size: 50, color: Colors.grey),
+                                icon: const Icon(Icons.add_photo_alternate, size: 50, color: Colors.grey),
                                 onPressed: () async {
                                   String? respuestaImage = await pickImageWeb();
                                   if (respuestaImage != null) {
@@ -1461,7 +1456,7 @@ class _HomeState extends State<Home> {
                               ),
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
@@ -1625,12 +1620,12 @@ class CardNovilProduct extends StatelessWidget {
                                 },
                                 skeleton: isLoading,
                                 isCarrito: false,
-                                description: product.title ?? '',
+                                description: product.title,
                                 price: "${12.00}",
-                                url: product.image_url == null ? '' : product.image_url ?? '',
+                                url: product.image_url == null ? '' : product.image_url,
 
                                 image: null, // Usa la URL de la imagen del producto
-                                label: product.content!,
+                                label: product.content,
                               ),
                             ),
                           ));

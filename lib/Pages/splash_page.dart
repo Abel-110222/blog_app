@@ -1,13 +1,12 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:blog_app/controllers/login_controller.dart';
 import 'package:blog_app/models/auth/user_model.dart';
 import 'package:blog_app/utils/default_struct_http_response.dart';
 import 'package:blog_app/utils/responsive.dart';
 import 'package:blog_app/widgets/my_text_form_field.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -30,7 +29,6 @@ class _LoginPageState extends State<LoginPage> {
   bool obscureTextPassword = true;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     usernameController.text = "admin@email.com";
     passwordController.text = "123456";
@@ -55,12 +53,7 @@ class _LoginPageState extends State<LoginPage> {
         // Convierte el JSON del usuario a UserModel
         UserModel user = UserModel.fromJson(userJson);
 
-        // Imprime los valores del UserModel para depuración
-        print('Username: ${user.username}');
-        print('Email: ${user.email}');
-        print('Password Hash: ${user.passwordHash}');
-        print('Created At: ${user.createdAt}');
-        print('Updated At: ${user.updatedAt}');
+   
 
         // Guarda el UserModel en SharedPreferences
         SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -116,7 +109,7 @@ class _LoginPageState extends State<LoginPage> {
                                 boxShadow: [
                                   BoxShadow(
                                     color: Colors.grey.withOpacity(0.5),
-                                    offset: Offset(0,
+                                    offset: const Offset(0,
                                         5), // Ajusta el offset para mover la sombra hacia la derecha
                                     blurRadius: 7,
                                     spreadRadius: 0, // Cambia el spreadRadius según sea necesario
@@ -136,7 +129,7 @@ class _LoginPageState extends State<LoginPage> {
                           boxShadow: [
                             BoxShadow(
                               color: Colors.grey.withOpacity(0.5),
-                              offset: Offset(
+                              offset: const Offset(
                                   10, 0), // Ajusta el offset para mover la sombra hacia la derecha
                               blurRadius: 7,
                               spreadRadius: 0, // Cambia el spreadRadius según sea necesario
@@ -164,17 +157,17 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget panelInformation() {
-    return Stack(
+    return const Stack(
       alignment: AlignmentDirectional.center,
       fit: StackFit.passthrough,
       children: [
         Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const SizedBox(height: 20),
-            const SizedBox(height: 35),
-            const SizedBox(height: 55),
-            const SizedBox(height: 30),
+            SizedBox(height: 20),
+            SizedBox(height: 35),
+            SizedBox(height: 55),
+            SizedBox(height: 30),
           ],
         ),
 
@@ -183,11 +176,11 @@ class _LoginPageState extends State<LoginPage> {
           left: 15,
           bottom: 75,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
+            padding: EdgeInsets.symmetric(horizontal: 30),
             child: Text(
               " ",
               textAlign: TextAlign.center,
-              style: const TextStyle(
+              style: TextStyle(
                 color: Colors.white,
                 fontSize: 24,
               ),
@@ -220,9 +213,10 @@ class _LoginPageState extends State<LoginPage> {
                     ///
                     ///!  Logo KananFleet
                     const SizedBox(height: 35),
+                    // ignore: sized_box_for_whitespace
                     Container(
                       height: 39,
-                      child: Text("Bienvenido",
+                      child: const Text("Bienvenido",
                           style: TextStyle(
                               fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black)),
                     ),

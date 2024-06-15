@@ -39,9 +39,11 @@ Future<DefaultStructHttpResponse> httpGetPostResponse(
     }
 
     if (kDebugMode && showResult) {
-      print('----response.ini: $url\n');
-      print(response!.body);
-      print('\n----response.end');
+      if (kDebugMode) {
+        print('----response.ini: $url\n');
+        print(response!.body);
+        print('\n----response.end');
+      }
     }
 
     defaultStruct.body = response!.body;

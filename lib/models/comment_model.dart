@@ -1,6 +1,5 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:blog_app/models/auth/user_model.dart';
 
 class CommentModel {
   

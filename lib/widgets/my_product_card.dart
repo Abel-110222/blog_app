@@ -1,4 +1,4 @@
-// ignore_for_file: unused_local_variable
+// ignore_for_file: unused_local_variable, prefer_const_constructors_in_immutables, sized_box_for_whitespace, use_super_parameters
 
 import 'dart:convert';
 import 'dart:typed_data';
@@ -9,7 +9,6 @@ import 'package:blog_app/utils/default_struct_http_response.dart';
 import 'package:blog_app/widgets/my_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
 class MyProductCard extends StatefulWidget {
   final bool skeleton;
@@ -51,7 +50,7 @@ class _MyProductCardState extends State<MyProductCard> {
       context: context,
       builder: (context) => Dialog(
         child: Container(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           child: Image.memory(
             Uint8List.fromList(base64Decode(imageUrl)),
             fit: BoxFit.contain,
@@ -107,7 +106,7 @@ class _MyProductCardState extends State<MyProductCard> {
                           Uint8List.fromList(base64Decode(widget.url)),
                           fit: BoxFit.scaleDown,
                           errorBuilder: (context, error, stackTrace) {
-                            return Center(
+                            return const Center(
                               child: Icon(
                                 Icons.error,
                                 color: Colors.red,
@@ -182,10 +181,10 @@ class _MyProductCardState extends State<MyProductCard> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text("Comentarios (${widget.comentarios!.length})",
-                  style: TextStyle(fontSize: 11, color: Colors.grey)),
+                  style: const TextStyle(fontSize: 11, color: Colors.grey)),
             ],
           ),
-          Divider(color: Colors.grey),
+          const Divider(color: Colors.grey),
           // Action Buttons Row
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -215,21 +214,21 @@ class _MyProductCardState extends State<MyProductCard> {
                     itemBuilder: (context, index) {
                       final comentario = widget.comentarios![index];
                       return Row(children: [
-                        Icon(Icons.comment, color: Colors.grey, size: 13),
-                        SizedBox(width: 10),
+                        const Icon(Icons.comment, color: Colors.grey, size: 13),
+                        const SizedBox(width: 10),
                         Text(
                           comentario.content,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(fontSize: 13),
+                          style: const TextStyle(fontSize: 13),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 2,
                         ),
                       ]);
                     },
                   )
-                : Center(
+                : const Center(
                     child: Text(
                     'No hay comentarios',
                     style: TextStyle(color: Colors.black, fontSize: 10),
@@ -268,7 +267,6 @@ class _MyProductCardState extends State<MyProductCard> {
 
                       if (response.statusCode == 200 || response.statusCode == 201) {}
                       setState(() {});
-                      print(widget.comentarios!.length);
                     }
                   },
                 ),
@@ -307,7 +305,7 @@ class ActionButton extends StatelessWidget {
           icon: Icon(icon, color: backColor),
           label: Text(
             label,
-            style: TextStyle(color: Colors.black),
+            style: const TextStyle(color: Colors.black),
           ),
         ),
       ),

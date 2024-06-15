@@ -8,13 +8,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:blog_app/models/category/categories_model.dart';
-import 'package:blog_app/models/organization/organization_model.dart';
-import 'package:blog_app/providers/categories_provider.dart';
 import 'package:blog_app/providers/categories_provider.dart';
 import 'package:blog_app/utils/responsive.dart';
 import 'package:blog_app/widgets/my_category_card.dart';
 import 'package:blog_app/widgets/my_filter_card_product.dart';
-import 'package:blog_app/widgets/my_organization_card.dart';
 
 class CategoriesScreen extends StatefulWidget {
   const CategoriesScreen({super.key});

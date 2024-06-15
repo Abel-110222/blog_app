@@ -5,10 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:blog_app/Pages/home.dart';
 import 'package:blog_app/Pages/splash_page.dart';
-import 'package:blog_app/Pages/promotion_splash.dart';
 import 'package:blog_app/bloc/theme.dart';
 import 'package:blog_app/providers/categories_provider.dart';
-import 'package:blog_app/providers/organizations_provider.dart';
 import 'package:blog_app/providers/product_provider.dart';
 
 void main() {

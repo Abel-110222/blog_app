@@ -193,7 +193,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                                 width: 350,
                                                 height: 250,
                                                 child: MyProductCard(
-                                                  comentarios: [],
+                                                  comentarios: const [],
                                                   onPressed: (value) {
                                                    
 
@@ -288,7 +288,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                             )
                                       : isLoading //! Resolucion para Tablets
                                           ? CardMovilProductLoading(isLoading: isLoading)
-                                          : CardNovilProduct(products: [], isLoading: isLoading),
+                                          : CardNovilProduct(products: const [], isLoading: isLoading),
                             ],
                           ),
                         ),
