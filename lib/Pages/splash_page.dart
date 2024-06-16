@@ -30,8 +30,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
-    usernameController.text = "admin@email.com";
-    passwordController.text = "123456";
+  
   }
 
   void login() async {

@@ -364,7 +364,8 @@ class _HomeState extends State<Home> {
                                       color: Colors.grey.withOpacity(0.5), // Color de la sombra
                                       spreadRadius: 2, // Extensión de la sombra
                                       blurRadius: 5, // Desenfoque de la sombra
-                                      offset: const Offset(0, 3), // Desplazamiento de la sombra (x, y)
+                                      offset:
+                                          const Offset(0, 3), // Desplazamiento de la sombra (x, y)
                                     ),
                                   ],
                                 ),
@@ -823,7 +824,7 @@ class _HomeState extends State<Home> {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        'M E T I N G   P O I N T',
+                        'Q U E M A D O S   M I D',
                         style: TextStyle(
                           color: isDarkTheme ? Colors.white : Colors.black,
                           fontSize: 22,
@@ -842,77 +843,77 @@ class _HomeState extends State<Home> {
                   Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: Column(children: [
-                      ListTile(
-                        leading: const Icon(
-                          FontAwesomeIcons.house,
-                        ),
-                        title: const Text(' Home '),
-                        onTap: () {
-                          // Acción al seleccionar el elemento del Drawer
-                          Navigator.pop(context);
-                        },
-                      ),
-                      ListTile(
-                        leading: const Icon(
-                          FontAwesomeIcons.bagShopping,
-                        ),
-                        title: const Text(' Productos '),
-                        onTap: () {
-                          Navigator.pop(context);
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => const ProductsScreen()),
-                          );
-                          // Cambiar tema
-                        },
-                      ),
-                      ListTile(
-                        hoverColor: Colors.cyan,
-                        leading: const Icon(
-                          FontAwesomeIcons.tags,
-                        ),
-                        title: const Text(' Categorias '),
-                        onTap: () {
-                          Navigator.pop(context);
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => const CategoriesScreen()),
-                          );
-                        },
-                      ),
-                      ExpansionTile(
-                        leading: const Icon(
-                          FontAwesomeIcons.buildingUser,
-                        ),
-                        title: const Text('Organizaciones'),
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: ListTile(
-                              title: const Text('Ver Organizaciones'),
-                              onTap: () {
-                                Navigator.pop(context);
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const OrganizationsScreen()),
-                                );
+                      //ListTile(
+                      //   leading: const Icon(
+                      //     FontAwesomeIcons.house,
+                      //   ),
+                      //   title: const Text(' Home '),
+                      //   onTap: () {
+                      //     // Acción al seleccionar el elemento del Drawer
+                      //     Navigator.pop(context);
+                      //   },
+                      // ),
+                      // ListTile(
+                      //   leading: const Icon(
+                      //     FontAwesomeIcons.bagShopping,
+                      //   ),
+                      //   title: const Text(' Productos '),
+                      //   onTap: () {
+                      //     Navigator.pop(context);
+                      //     Navigator.push(
+                      //       context,
+                      //       MaterialPageRoute(builder: (context) => const ProductsScreen()),
+                      //     );
+                      //     // Cambiar tema
+                      //   },
+                      // ),
+                      // ListTile(
+                      //   hoverColor: Colors.cyan,
+                      //   leading: const Icon(
+                      //     FontAwesomeIcons.tags,
+                      //   ),
+                      //   title: const Text(' Categorias '),
+                      //   onTap: () {
+                      //     Navigator.pop(context);
+                      //     Navigator.push(
+                      //       context,
+                      //       MaterialPageRoute(builder: (context) => const CategoriesScreen()),
+                      //     );
+                      //   },
+                      // ),
+                      // ExpansionTile(
+                      //   leading: const Icon(
+                      //     FontAwesomeIcons.buildingUser,
+                      //   ),
+                      //   title: const Text('Organizaciones'),
+                      //   children: [
+                      //     Padding(
+                      //       padding: const EdgeInsets.only(left: 15),
+                      //       child: ListTile(
+                      //         title: const Text('Ver Organizaciones'),
+                      //         onTap: () {
+                      //           Navigator.pop(context);
+                      //           Navigator.push(
+                      //             context,
+                      //             MaterialPageRoute(
+                      //                 builder: (context) => const OrganizationsScreen()),
+                      //           );
 
-                                // Acción cuando se toca la opción 1
-                              },
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: ListTile(
-                              title: const Text('Mi Organización'),
-                              onTap: () {
-                                // Acción cuando se toca la opción 2
-                              },
-                            ),
-                          ),
-                        ],
-                      ),
+                      //           // Acción cuando se toca la opción 1
+                      //         },
+                      //       ),
+                      //     ),
+                      //     Padding(
+                      //       padding: const EdgeInsets.only(left: 15),
+                      //       child: ListTile(
+                      //         title: const Text('Mi Organización'),
+                      //         onTap: () {
+                      //           // Acción cuando se toca la opción 2
+                      //         },
+                      //       ),
+                      //     ),
+                      //   ],
+                      // ),
                       const SizedBox(height: 5),
                       Container(
                         decoration: const BoxDecoration(
@@ -977,89 +978,89 @@ class _HomeState extends State<Home> {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Container(
-                height: 130,
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  border:
-                      const Border(bottom: BorderSide(color: Color.fromARGB(255, 151, 151, 151))),
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: 35,
-                          height: 35,
-                          child: CircularPercentIndicator(
-                            radius: 16.0,
-                            lineWidth: 3.0,
-                            percent: 0.5,
-                            center: const Text("50%",
-                                style: TextStyle(fontSize: 10.0, color: Colors.black)),
-                            progressColor: Colors.orange, // Color de progreso naranja
-                          ),
-                        ),
-                        const Icon(FontAwesomeIcons.xmark, color: Colors.black, size: 15),
-                      ],
-                    ),
-                    const SizedBox(height: 5),
-                    Row(
-                      children: [
-                        RichText(
-                            text: const TextSpan(
-                          children: [
-                            TextSpan(
-                              text: 'Acompleta tu perfil\n',
-                              style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-                            ),
-                            TextSpan(
-                              text: 'Completa tu perfil para terminar',
-                              style:
-                                  TextStyle(fontSize: 12, color: Color.fromARGB(255, 66, 66, 66)),
-                            ),
-                          ],
-                        )),
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 4),
-                      child: Container(
-                        width: 200,
-                        height: 30, // Ajusta el ancho según sea necesario
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10), // Bordes cuadrados
-                          gradient: LinearGradient(
-                            colors: [Colors.orange.shade400, Colors.orange.shade800],
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight,
-                          ),
-                        ),
-                        child: TextButton(
-                          onPressed: () {
-                            // Acción al presionar el botón
-                          },
-                          child: const Text(
-                            "Editar Perfil",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.all(20),
+            //   child: Container(
+            //     height: 130,
+            //     padding: const EdgeInsets.all(10),
+            //     decoration: BoxDecoration(
+            //       border:
+            //           const Border(bottom: BorderSide(color: Color.fromARGB(255, 151, 151, 151))),
+            //       color: Colors.white,
+            //       borderRadius: BorderRadius.circular(8),
+            //     ),
+            //     child: Column(
+            //       children: [
+            //         Row(
+            //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //           crossAxisAlignment: CrossAxisAlignment.start,
+            //           children: [
+            //             Container(
+            //               width: 35,
+            //               height: 35,
+            //               child: CircularPercentIndicator(
+            //                 radius: 16.0,
+            //                 lineWidth: 3.0,
+            //                 percent: 0.5,
+            //                 center: const Text("50%",
+            //                     style: TextStyle(fontSize: 10.0, color: Colors.black)),
+            //                 progressColor: Colors.orange, // Color de progreso naranja
+            //               ),
+            //             ),
+            //             const Icon(FontAwesomeIcons.xmark, color: Colors.black, size: 15),
+            //           ],
+            //         ),
+            //         const SizedBox(height: 5),
+            //         Row(
+            //           children: [
+            //             RichText(
+            //                 text: const TextSpan(
+            //               children: [
+            //                 TextSpan(
+            //                   text: 'Acompleta tu perfil\n',
+            //                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+            //                 ),
+            //                 TextSpan(
+            //                   text: 'Completa tu perfil para terminar',
+            //                   style:
+            //                       TextStyle(fontSize: 12, color: Color.fromARGB(255, 66, 66, 66)),
+            //                 ),
+            //               ],
+            //             )),
+            //           ],
+            //         ),
+            //         Padding(
+            //           padding: const EdgeInsets.only(top: 4),
+            //           child: Container(
+            //             width: 200,
+            //             height: 30, // Ajusta el ancho según sea necesario
+            //             decoration: BoxDecoration(
+            //               borderRadius: BorderRadius.circular(10), // Bordes cuadrados
+            //               gradient: LinearGradient(
+            //                 colors: [Colors.orange.shade400, Colors.orange.shade800],
+            //                 begin: Alignment.centerLeft,
+            //                 end: Alignment.centerRight,
+            //               ),
+            //             ),
+            //             child: TextButton(
+            //               onPressed: () {
+            //                 // Acción al presionar el botón
+            //               },
+            //               child: const Text(
+            //                 "Editar Perfil",
+            //                 style: TextStyle(
+            //                   color: Colors.white,
+            //                   fontSize: 16,
+            //                   fontWeight: FontWeight.bold,
+            //                 ),
+            //               ),
+            //             ),
+            //           ),
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
             Container(
                 padding: const EdgeInsets.symmetric(horizontal: 5),
                 height: 70,
@@ -1443,7 +1444,8 @@ class _HomeState extends State<Home> {
                                 ],
                               )
                             : IconButton(
-                                icon: const Icon(Icons.add_photo_alternate, size: 50, color: Colors.grey),
+                                icon: const Icon(Icons.add_photo_alternate,
+                                    size: 50, color: Colors.grey),
                                 onPressed: () async {
                                   String? respuestaImage = await pickImageWeb();
                                   if (respuestaImage != null) {
