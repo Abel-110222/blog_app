@@ -2,6 +2,8 @@
 
 import 'dart:convert';
 
+import 'package:blog_app/Pages/profile_screen.dart';
+import 'package:blog_app/Pages/splash_page.dart';
 import 'package:blog_app/controllers/post_controller.dart';
 import 'package:blog_app/models/auth/user_model.dart';
 import 'package:blog_app/models/posts/post_model.dart';
@@ -77,6 +79,7 @@ class _HomeState extends State<Home> {
 
   UserModel? myUser;
   List<PostModel> postsAll = [];
+  List<PostModel> postsAllFind = [];
 
   @override
   void initState() {
@@ -272,7 +275,7 @@ class _HomeState extends State<Home> {
                                     fontSize: 25, fontWeight: FontWeight.bold, color: textColor),
                               ),
                               TextSpan(
-                                text: '¿A quién quieres quemar... 😈',
+                                text: '¿A quién quieres quemar...? 😈',
                                 style: TextStyle(
                                     fontSize: 15, color: textColor, fontStyle: FontStyle.italic),
                               ),
@@ -290,7 +293,12 @@ class _HomeState extends State<Home> {
                       builder: (BuildContext context) {
                         return IconButton(
                           onPressed: () {
-                            Scaffold.of(context).openEndDrawer(); // Abre el EndDrawer
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ProfileScreen(user: myUser!),
+                              ),
+                            );
                           },
                           icon: const Icon(FontAwesomeIcons.user),
                         );
@@ -311,11 +319,11 @@ class _HomeState extends State<Home> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text('${resp.width}x${resp.height}', style: const TextStyle(fontSize: 12)),
                       ResponsiveGridRow(
                         children: <ResponsiveGridCol>[
                           ResponsiveGridCol(
                             lg: 7,
+                            md: 9,
                             xs: 9,
                             child: SizedBox(
                               height: 50,
@@ -338,14 +346,13 @@ class _HomeState extends State<Home> {
                                 validator: (value) {
                                   return null;
                                 },
-                                onChanged: (text) {
-                                  setState(() {});
-                                },
+                                onChanged: (text) {},
                               ),
                             ),
                           ),
                           ResponsiveGridCol(
-                            lg: 1,
+                            lg: 3,
+                            md: 3,
                             xs: 3,
                             child: Padding(
                               padding: const EdgeInsets.only(left: 15),
@@ -592,7 +599,7 @@ class _HomeState extends State<Home> {
                                                       left: 15, right: 5, top: 15),
                                                   child: SizedBox(
                                                     width: 380,
-                                                    height: 400,
+                                                    height: 415,
                                                     child: MyProductCard(
                                                       comentarios: const [],
                                                       onPressed: (value) {
@@ -653,7 +660,7 @@ class _HomeState extends State<Home> {
                                                       left: 15, right: 5, top: 15),
                                                   child: SizedBox(
                                                     width: 380,
-                                                    height: 400,
+                                                    height: 415,
                                                     child: MyProductCard(
                                                       id: product.id,
                                                       comentarios: product.comments,
@@ -731,7 +738,7 @@ class _HomeState extends State<Home> {
                                                 const EdgeInsets.only(left: 15, right: 5, top: 15),
                                             child: SizedBox(
                                               width: 380,
-                                              height: 400,
+                                              height: 415,
                                               child: MyProductCard(
                                                 id: product.id,
                                                 comentarios: product.comments,
@@ -1072,45 +1079,66 @@ class _HomeState extends State<Home> {
                 ),
                 child: Row(
                   children: [
-                    Container(
-                      width: 40,
-                      height: 40,
-                      decoration: BoxDecoration(
-                        color: Colors.blue,
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.2),
-                            spreadRadius: 2,
-                            blurRadius: 4,
-                            offset: const Offset(0, 2),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ProfileScreen(user: myUser!),
                           ),
-                        ],
-                      ),
-                      child: const Icon(
-                        Icons.abc,
-                        size: 20,
-                        color: Colors.white,
+                        );
+                      },
+                      child: Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          color: Colors.blue,
+                          shape: BoxShape.circle,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.2),
+                              spreadRadius: 2,
+                              blurRadius: 4,
+                              offset: const Offset(0, 2),
+                            ),
+                          ],
+                        ),
+                        child: const Icon(
+                          Icons.person,
+                          size: 20,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                     const SizedBox(width: 10),
                     RichText(
-                        text: const TextSpan(
+                        text: TextSpan(
                       children: [
-                        TextSpan(
+                        const TextSpan(
                           text: 'Bienvenido\n',
                           style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                         ),
                         TextSpan(
-                          text: 'Abel Balam',
-                          style: TextStyle(fontSize: 14, color: Color.fromARGB(255, 66, 66, 66)),
+                          text: myUser?.username ?? "",
+                          style:
+                              const TextStyle(fontSize: 14, color: Color.fromARGB(255, 66, 66, 66)),
                         ),
                       ],
                     )),
                     const Spacer(),
-                    Icon(
-                      FontAwesomeIcons.rightFromBracket,
-                      color: Colors.red.shade400,
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const LoginPage(),
+                          ),
+                        );
+                      },
+                      child: Icon(
+                        FontAwesomeIcons.rightFromBracket,
+                        color: Colors.red.shade400,
+                      ),
                     ),
                   ],
                 )),
@@ -1602,12 +1630,12 @@ class CardNovilProduct extends StatelessWidget {
                           width: MediaQuery.of(context).size.width >= 760
                               ? MediaQuery.of(context).size.width / 2.5
                               : MediaQuery.of(context).size.width / 1.1,
-                          height: 400,
+                          height: 415,
                           child: Padding(
                             padding: const EdgeInsets.only(left: 15, right: 5, top: 15),
                             child: SizedBox(
                               width: 500,
-                              height: 400,
+                              height: 415,
                               child: MyProductCard(
                                 id: product.id,
                                 comentarios: product.comments,

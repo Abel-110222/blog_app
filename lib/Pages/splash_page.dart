@@ -30,7 +30,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
-  
   }
 
   void login() async {
@@ -44,24 +43,40 @@ class _LoginPageState extends State<LoginPage> {
           ? await LoginController.login(email, password)
           : await LoginController.register(name, email, password);
       if (response.statusCode == 200 || response.statusCode == 201) {
-        // Convierte la respuesta JSON a UserModel
-        // Decodifica la respuesta JSON y accede al valor anidado bajo "user"
-        Map<String, dynamic> responseBody = jsonDecode(response.body);
-        Map<String, dynamic> userJson = responseBody['user'];
+        if (isLogin) {
+          // Convierte la respuesta JSON a UserModel
+          // Decodifica la respuesta JSON y accede al valor anidado bajo "user"
+          Map<String, dynamic> responseBody = jsonDecode(response.body);
+          Map<String, dynamic> userJson = responseBody['user'];
 
-        // Convierte el JSON del usuario a UserModel
-        UserModel user = UserModel.fromJson(userJson);
+          // Convierte el JSON del usuario a UserModel
+          UserModel user = UserModel.fromJson(userJson);
 
-   
+          // Guarda el UserModel en SharedPreferences
+          SharedPreferences prefs = await SharedPreferences.getInstance();
+          await prefs.setString('user', jsonEncode(user.toJson()));
 
-        // Guarda el UserModel en SharedPreferences
-        SharedPreferences prefs = await SharedPreferences.getInstance();
-        await prefs.setString('user', jsonEncode(user.toJson()));
+          Navigator.pushNamed(
+            context,
+            'view_Home',
+          );
+        } else {
+          DefaultStructHttpResponse response = await LoginController.login(email, password);
+          Map<String, dynamic> responseBody = jsonDecode(response.body);
+          Map<String, dynamic> userJson = responseBody['user'];
 
-        Navigator.pushNamed(
-          context,
-          'view_Home',
-        );
+          // Convierte el JSON del usuario a UserModel
+          UserModel user = UserModel.fromJson(userJson);
+
+          // Guarda el UserModel en SharedPreferences
+          SharedPreferences prefs = await SharedPreferences.getInstance();
+          await prefs.setString('user', jsonEncode(user.toJson()));
+
+          Navigator.pushNamed(
+            context,
+            'view_Home',
+          );
+        }
       } else {
         setState(() {
           textInvalid = true;
